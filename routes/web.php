@@ -19,3 +19,8 @@ Route::get('/logout', [StaffAuthController::class, 'logout'])->name('staff.logou
 
 Route::resource('pasien', PasienController::class);
 
+Route::get('/landing', function () {
+    return view('landingpage.landing');
+});
+
+
