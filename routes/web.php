@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaffAuthController;
 use App\Http\Controllers\PasienController;
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // Route untuk menampilkan form login staff
 Route::get('/login', [StaffAuthController::class, 'showLoginForm'])->name('staff.login.form');
