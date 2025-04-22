@@ -411,7 +411,6 @@
             z-index: 1;
         }
 
-        /* Glow Biru Kiri Atas */
         .fitur::before {
             content: '';
             position: absolute;
@@ -425,7 +424,6 @@
             pointer-events: none;
         }
 
-        /* Glow Pink Kanan Bawah */
         .fitur::after {
             content: '';
             position: absolute;
@@ -439,7 +437,6 @@
             pointer-events: none;
         }
 
-        /* Glow Ungu Tengah */
         .fitur .glow-purple {
             position: absolute;
             width: 700px;
@@ -453,7 +450,6 @@
             pointer-events: none;
         }
 
-        /* Glow Putih Tengah Atas */
         .fitur .glow-white {
             position: absolute;
             width: 500px;
@@ -466,13 +462,11 @@
             pointer-events: none;
         }
 
-
-
-
         .fitur .judul {
             font-size: 2.5em;
             font-weight: bold;
             margin-bottom: 40px;
+            font-family: 'Croissant One', cursive;
         }
 
         .subjudul-fitur {
@@ -484,7 +478,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
 
         .fitur-grid {
             display: grid;
@@ -509,8 +502,8 @@
         }
 
         .fitur-icon {
-            width: 80px;
-            height: 80px;
+            max-width: 200px;
+            height: auto;
             margin: 15px 0;
         }
 
@@ -532,13 +525,144 @@
 
 
         /* Cara Kerja */
-        .how-it-works {
-            margin-top: 30px;
+        .section.how-it-works {
+            padding: 60px 20px;
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
         }
 
-        .how-it-works ol {
-            margin-left: 20px;
+        .how-it-works-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: flex-start;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
         }
+
+        .how-it-works-image {
+            max-width: 500px;
+            flex: 1;
+        }
+
+        .how-it-works-image img {
+            width: 100%;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+
+
+        .how-it-works-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .how-it-works-text h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .how-it-works-text h2 span {
+            color: #2d2549;
+        }
+
+        .steps {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .steps li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+
+        .number {
+            background: #2d2549;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            text-align: center;
+            line-height: 36px;
+            font-size: 16px;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+
+        .info h3 {
+            margin: 0 0 6px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .info p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Responsif untuk Mobile */
+        @media (max-width: 768px) {
+            .how-it-works-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: left;
+                gap: 30px;
+            }
+
+            .how-it-works-text {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+
+            .how-it-works-text h2 {
+                font-size: 28px;
+                text-align: center;
+            }
+
+            .steps li {
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+
+            .number {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+                line-height: 30px;
+                margin-right: 12px;
+            }
+
+            .info h3 {
+                font-size: 15px;
+            }
+
+            .info p {
+                font-size: 13px;
+            }
+
+            .how-it-works-image {
+                max-width: 80%;
+            }
+
+            .how-it-works-image img {
+                width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+
+
 
         /* footer */
         footer {
@@ -622,7 +746,7 @@
         </div>
 
         <div class="hero-img" data-aos="fade-left">
-            <div class="blur-bg"></div> <!-- background blur -->
+            <div class="blur-bg"></div>
             <img src="img/perawat.png" alt="Ilustrasi Perawat" class="gambar-perawat">
         </div>
     </section>
@@ -677,11 +801,8 @@
             mirror: true,
             offset: 100,
         });
-
-        // Refresh AOS setelah semua konten dimuat
         window.addEventListener('load', AOS.refresh);
     </script>
-
 
 
 
@@ -691,38 +812,42 @@
         <div class="glow-white"></div>
 
         <!-- Konten -->
-        <div class="fitur-content">
-            <h2 class="judul">Fitur Utama <span style="color:#2d2549;">Medvora</span></h2>
-            <p class="subjudul-fitur">
+        <div class="fitur-content" data-aos="zoom-in-up" data-aos-duration="1500" data-aos-delay="500">
+            <h2 class="judul" data-aos="flip-down" data-aos-duration="1500" data-aos-delay="500">
+                Fitur Utama <span style="color:#2d2549;">Medvora</span>
+            </h2>
+            <p class="subjudul-fitur" data-aos="fade-in" data-aos-duration="1500" data-aos-delay="800">
                 Temukan fitur-fitur andalan Medvora yang dirancang untuk membantu pasien dalam
                 mengelola pengobatan, menjaga kesehatan, dan memberikan akses cepat saat keadaan darurat.
             </p>
+        </div>
 
-            <div class="fitur-grid">
-                <div class="fitur-box box-1">
-                    <img src="img/notif.png" alt="Pengingat Obat" class="fitur-icon">
-                    <h3>Pengingat Obat yang Akurat</h3>
-                    <p>Medvora mengirimkan notifikasi tepat waktu agar pasien tidak lupa minum obat.</p>
-                </div>
 
-                <div class="fitur-box box-2">
-                    <h3>AI Chatbot Kesehatan</h3>
-                    <p>Dapatkan informasi dan konsultasi cepat tentang obat melalui chatbot cerdas.</p>
-                    <img src="img/chatbot.png" alt="Chatbot" class="fitur-icon">
-                </div>
-
-                <div class="fitur-box box-3">
-                    <img src="img/calendar.png" alt="Pemantauan" class="fitur-icon">
-                    <h3>Pemantauan Kesehatan</h3>
-                    <p>Lihat riwayat konsumsi obat & progres kesehatan dengan grafik interaktif.</p>
-                </div>
-
-                <div class="fitur-box box-4">
-                    <h3>Tombol Darurat Cepat</h3>
-                    <p>Fitur emergency button yang langsung menghubungi kontak darurat saat dibutuhkan.</p>
-                    <img src="img/emergency.png" alt="Darurat" class="fitur-icon">
-                </div>
+        <div class="fitur-grid">
+            <div class="fitur-box box-1" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="500">
+                <img src="img/notif.png" alt="Pengingat Obat" class="fitur-icon">
+                <h3>Pengingat Obat yang Akurat</h3>
+                <p>Medvora mengirimkan notifikasi tepat waktu agar pasien tidak lupa minum obat.</p>
             </div>
+
+            <div class="fitur-box box-2" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="500">
+                <h3>AI Chatbot Kesehatan</h3>
+                <p>Dapatkan informasi dan konsultasi cepat tentang obat melalui chatbot cerdas.</p>
+                <img src="img/chatbot.png" alt="Chatbot" class="fitur-icon">
+            </div>
+
+            <div class="fitur-box box-3" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="500">
+                <img src="img/calendar.png" alt="Pemantauan" class="fitur-icon">
+                <h3>Pemantauan Kesehatan</h3>
+                <p>Lihat riwayat konsumsi obat & progres kesehatan dengan grafik interaktif.</p>
+            </div>
+
+            <div class="fitur-box box-4" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="500">
+                <h3>Tombol Darurat Cepat</h3>
+                <p>Fitur emergency button yang langsung menghubungi kontak darurat saat dibutuhkan.</p>
+                <img src="img/emergency.png" alt="Darurat" class="fitur-icon">
+            </div>
+        </div>
         </div>
     </section>
 
@@ -731,15 +856,55 @@
 
 
     <section class="section how-it-works" id="cara">
-        <h2>Cara <span style="color:#2d2549;">Kerja</span></h2>
-        <ol>
-            <li>Registrasi Pasien</li>
-            <li>Unduh Aplikasi</li>
-            <li>Pengaturan Alarm</li>
-            <li>Notifikasi & Pengingat</li>
-            <li>Pemantauan oleh tenaga medis</li>
-        </ol>
+        <div class="how-it-works-container">
+            <div class="how-it-works-image">
+                <img src="img/carakerja.png" alt="Tampilan Aplikasi Medvora" />
+            </div>
+            <div class="how-it-works-text">
+                <h2>Cara <span>Kerja</span></h2>
+                <ul class="steps">
+                    <li>
+                        <div class="number">1</div>
+                        <div class="info">
+                            <h3>Registrasi Pasien</h3>
+                            <p>Pasien rawat jalan mendaftar melalui admin dengan menginput NIK, username, email, dan
+                                password.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="number">2</div>
+                        <div class="info">
+                            <h3>Unduh Aplikasi</h3>
+                            <p>Pasien mengunduh dan masuk ke aplikasi Medvora.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="number">3</div>
+                        <div class="info">
+                            <h3>Pengaturan Alarm</h3>
+                            <p>Admin memasukkan jadwal minum obat sesuai resep dokter.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="number">4</div>
+                        <div class="info">
+                            <h3>Notifikasi & Pengingat</h3>
+                            <p>Aplikasi mengingatkan pasien untuk minum obat sesuai jadwal.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="number">5</div>
+                        <div class="info">
+                            <h3>Pemantauan</h3>
+                            <p>Data kepatuhan pasien dapat dipantau oleh tenaga medis.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </section>
+
+
 
 
 
