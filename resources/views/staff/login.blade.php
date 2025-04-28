@@ -28,11 +28,6 @@
       background-color: rgba(255, 255, 255, 0.08);
     }
 
-    .circle.stroke {
-      background-color: transparent;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-    }
-
     .circle.one {
       width: 300px; height: 300px;
       top: -60px; left: -60px;
@@ -53,15 +48,6 @@
       top: 80px; right: 80px;
     }
 
-    .circle.five.stroke {
-      width: 220px; height: 220px;
-      top: 200px; left: 40px;
-    }
-
-    .circle.six.stroke {
-      width: 180px; height: 180px;
-      bottom: 100px; right: 30px;
-    }
 
     .card {
       background-color: white;

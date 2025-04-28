@@ -1,20 +1,42 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class pasien extends Model
+class Pasien extends Model
 {
     use HasFactory;
-
-    public $timestamps = false;
 
     protected $table = 'pasien';
     protected $primaryKey = 'id_pasien';
 
+
+    public $timestamps = true;
+
+
     protected $fillable = [
-        'nama_pasien', 'usia', 'jenis_kelamin', 'nomor_hp',
-        'riwayat_penyakit', 'nomor_hp_keluarga', 'password'
+        'nik',
+        'nama_pasien',
+        'email',
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'nomor_hp',
+        'nomor_hp_keluarga',
+        'riwayat_penyakit',
+        'password',
+    ];
+
+
+    protected $hidden = [
+        'password',
+    ];
+
+
+    protected $casts = [
+        'tanggal_lahir' => 'date',
+        'created_at'    => 'datetime',
+        'updated_at'    => 'datetime',
     ];
 }
