@@ -260,6 +260,27 @@
             transform: scale(1.05);
         }
 
+        @media(max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-img {
+                margin-top: 20px;
+                order: 1;
+            }
+
+            .gambar-perawat {
+                width: 80%;
+                max-width: 250px;
+            }
+        }
+
         /* Animasi */
         @keyframes fadeUp {
             from {
@@ -400,6 +421,7 @@
         .section p {
             max-width: 800px;
         }
+
 
         /* Fitur Utama */
         .fitur {
@@ -560,10 +582,12 @@
         }
 
         .how-it-works-text h2 {
+            font-family: 'Croissant One';
             font-size: 36px;
             margin-bottom: 30px;
             font-weight: 700;
             color: #000;
+            text-align: center;
         }
 
         .how-it-works-text h2 span {
@@ -598,13 +622,13 @@
 
         .info h3 {
             margin: 0 0 6px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
         }
 
         .info p {
             margin: 0;
-            font-size: 14px;
+            font-size: 15px;
             color: #555;
         }
 
@@ -661,21 +685,33 @@
             }
         }
 
-
-
-
-        /* footer */
+        /* Footer */
         footer {
-            background: #2d2549;
+            background: linear-gradient(135deg, #2d2549, #3a2f63);
             color: #fff;
             padding: 40px 5%;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #fff;
+            border-radius: 10px 10px 0 0;
         }
 
         footer .col {
             margin-bottom: 20px;
+            flex: 1;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        footer h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         footer a {
@@ -683,30 +719,87 @@
             text-decoration: none;
             display: block;
             margin: 5px 0;
+            font-size: 14px;
+            line-height: 1.8;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #f2f6ff;
+            text-decoration: underline;
+            padding-left: 10px;
         }
 
         footer iframe {
             width: 100%;
             height: 200px;
             border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        @media(max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
+        footer iframe:hover {
+            transform: scale(1.05);
+        }
 
-            .features {
-                flex-direction: column;
-            }
+        footer p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #ccc;
+        }
 
-            .feature-box {
-                flex: 1 1 100%;
-            }
+        footer .col:last-child {
+            text-align: center;
+        }
 
+        footer .social-icon {
+            display: inline-block;
+            margin: 0 10px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        footer .social-icon img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        footer .social-icon:hover img {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        footer .social-icon a {
+            display: inline-block;
+        }
+
+        footer .social-icon a:hover {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
             footer {
                 flex-direction: column;
+                align-items: center;
+                padding: 30px 10%;
+            }
+
+            footer .col {
+                margin-bottom: 20px;
+                text-align: center;
+                width: 100%;
+            }
+
+            footer iframe {
+                height: 150px;
+                margin-top: 20px;
+            }
+
+            footer .social-icon {
+                margin: 10px;
             }
         }
     </style>
@@ -761,14 +854,11 @@
         </h2>
 
         <div class="tentang-container">
-            <!-- Gambar Puskesmas -->
             <div class="tentang-left" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">
                 <div class="image-frame">
                     <img src="img/puskesmashm.png" alt="Puskesmas Patrang" />
                 </div>
             </div>
-
-            <!-- Deskripsi -->
             <div class="tentang-right" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
                 <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
                     Medvora adalah aplikasi pengingat obat pintar yang dirancang untuk membantu pasien rawat jalan dalam
@@ -807,11 +897,8 @@
 
 
     <section class="fitur" id="fitur">
-        <!-- Glow Elements -->
         <div class="glow-purple"></div>
         <div class="glow-white"></div>
-
-        <!-- Konten -->
         <div class="fitur-content" data-aos="zoom-in-up" data-aos-duration="1500" data-aos-delay="500">
             <h2 class="judul" data-aos="flip-down" data-aos-duration="1500" data-aos-delay="500">
                 Fitur Utama <span style="color:#2d2549;">Medvora</span>
@@ -853,17 +940,15 @@
 
 
 
-
-
     <section class="section how-it-works" id="cara">
         <div class="how-it-works-container">
-            <div class="how-it-works-image">
+            <div class="how-it-works-image" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">
                 <img src="img/carakerja.png" alt="Tampilan Aplikasi Medvora" />
             </div>
             <div class="how-it-works-text">
-                <h2>Cara <span>Kerja</span></h2>
+                <h2 data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200">Cara <span>Kerja</span></h2>
                 <ul class="steps">
-                    <li>
+                    <li data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
                         <div class="number">1</div>
                         <div class="info">
                             <h3>Registrasi Pasien</h3>
@@ -871,28 +956,28 @@
                                 password.</p>
                         </div>
                     </li>
-                    <li>
+                    <li data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
                         <div class="number">2</div>
                         <div class="info">
                             <h3>Unduh Aplikasi</h3>
                             <p>Pasien mengunduh dan masuk ke aplikasi Medvora.</p>
                         </div>
                     </li>
-                    <li>
+                    <li data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
                         <div class="number">3</div>
                         <div class="info">
                             <h3>Pengaturan Alarm</h3>
                             <p>Admin memasukkan jadwal minum obat sesuai resep dokter.</p>
                         </div>
                     </li>
-                    <li>
+                    <li data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
                         <div class="number">4</div>
                         <div class="info">
                             <h3>Notifikasi & Pengingat</h3>
                             <p>Aplikasi mengingatkan pasien untuk minum obat sesuai jadwal.</p>
                         </div>
                     </li>
-                    <li>
+                    <li data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">
                         <div class="number">5</div>
                         <div class="info">
                             <h3>Pemantauan</h3>
@@ -903,8 +988,6 @@
             </div>
         </div>
     </section>
-
-
 
 
 
@@ -923,9 +1006,19 @@
         </div>
         <div class="col">
             <h4>Alamat</h4>
-            <p>Jl. Kaca Piring No.5, Gebang Tengah, Jember, Jawa Timur</p>
+            <p>Jl. Kaca Piring No.5, Gebang Tengah, Gebang, Kec. Patrang, Kabupaten Jember, Jawa Timur 68117</p>
+        </div>
+        <div class="col">
+            <h4>Ikuti Kami</h4>
+            <!-- Tautkan ke WhatsApp -->
+            <a href="https://wa.me/6289628321429" target="_blank" class="social-icon"><img src="img/wa.png" alt="WhatsApp"></a>
+            <!-- Tautkan ke Instagram -->
+            <a href="https://www.instagram.com/medvora__team?igsh=bW15azhlNHluaDhm" target="_blank" class="social-icon"><img src="img/ig.png" alt="Instagram"></a>
+            <!-- Tautkan ke Email -->
+            <a href="mailto:contact@cantikatriwahyuni76.com" class="social-icon"><img src="img/email.png" alt="Email"></a>
         </div>
     </footer>
+
 
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
