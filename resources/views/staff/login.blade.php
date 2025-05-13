@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login Admin</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+
   <style>
     * {
       box-sizing: border-box;
@@ -28,26 +30,10 @@
       background-color: rgba(255, 255, 255, 0.08);
     }
 
-    .circle.one {
-      width: 300px; height: 300px;
-      top: -60px; left: -60px;
-    }
-
-    .circle.two {
-      width: 400px; height: 400px;
-      bottom: -120px; right: -100px;
-    }
-
-    .circle.three {
-      width: 150px; height: 150px;
-      bottom: 50px; left: 60px;
-    }
-
-    .circle.four {
-      width: 100px; height: 100px;
-      top: 80px; right: 80px;
-    }
-
+    .circle.one { width: 300px; height: 300px; top: -60px; left: -60px; }
+    .circle.two { width: 400px; height: 400px; bottom: -120px; right: -100px; }
+    .circle.three { width: 150px; height: 150px; bottom: 50px; left: 60px; }
+    .circle.four { width: 100px; height: 100px; top: 80px; right: 80px; }
 
     .card {
       background-color: white;
@@ -59,19 +45,8 @@
       z-index: 10;
     }
 
-    .card h2 {
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      text-align: center;
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 30px;
-    }
+    .card h2 { text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 8px; }
+    .card p { text-align: center; font-size: 14px; color: #555; margin-bottom: 30px; }
 
     .input-group {
       position: relative;
@@ -92,7 +67,7 @@
       left: 12px;
       transform: translateY(-50%);
       color: #999;
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .input-group .eye {
@@ -101,30 +76,8 @@
       right: 12px;
       transform: translateY(-50%);
       color: #999;
-    }
-
-    .options {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 14px;
-      margin-bottom: 30px;
-    }
-
-    .options label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: #333;
-    }
-
-    .options a {
-      color: #6b5cff;
-      text-decoration: none;
-    }
-
-    .options a:hover {
-      text-decoration: underline;
+      font-size: 18px;
+      cursor: pointer;
     }
 
     button {
@@ -146,53 +99,42 @@
 </head>
 <body>
 
-  <!-- Background Circles -->
   <div class="circle one"></div>
   <div class="circle two"></div>
   <div class="circle three"></div>
   <div class="circle four"></div>
-  <div class="circle five stroke"></div>
-  <div class="circle six stroke"></div>
 
-  <!-- Login Card -->
   <div class="card">
     <h2>Hallo Admin !</h2>
     <p>Masukkan Informasi Akun</p>
 
     <form action="{{ route('staff.login.process') }}" method="POST">
-  @csrf
-  <div class="input-group">
-    <span class="icon">&#128100;</span>
-    <input 
-      type="email" 
-      name="email" 
-      placeholder="Masukkan Email" 
-      required 
-      value="{{ old('email') }}" />
+      @csrf
+      <div class="input-group">
+        <i class='bx bx-envelope icon'></i>
+        <input type="email" name="email" placeholder="Masukkan Email" required value="{{ old('email') }}">
+      </div>
+
+      <div class="input-group">
+        <i class='bx bx-lock icon'></i>
+        <input type="password" name="password" id="password" placeholder="Masukkan Password" required>
+        <i class='bx bx-show eye' id="togglePassword"></i>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
   </div>
 
-  <div class="input-group">
-    <span class="icon">&#128274;</span>
-    <span class="eye">&#128065;</span>
-    <input 
-      type="password" 
-      name="password" 
-      placeholder="Masukkan Password" 
-      required />
-  </div>
+  <script>
+    const toggle = document.getElementById("togglePassword");
+    const input = document.getElementById("password");
 
-  <div class="options">
-    <label>
-      <input type="checkbox" name="remember" />
-      Ingat Saya
-    </label>
-    <a href="#">Lupa Password?</a>
-  </div>
-
-  <button type="submit">Login</button>
-</form>
-
-  </div>
-
+    toggle.addEventListener("click", function () {
+      const isPassword = input.getAttribute("type") === "password";
+      input.setAttribute("type", isPassword ? "text" : "password");
+      this.classList.toggle("bx-show");
+      this.classList.toggle("bx-hide");
+    });
+  </script>
 </body>
 </html>
