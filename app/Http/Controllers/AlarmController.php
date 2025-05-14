@@ -43,7 +43,7 @@ class AlarmController extends Controller
     public function create(Request $request)
     {
         $id_pasien = $request->query('id_pasien');
-        $pasien = Pasien::findOrFail($id_pasien); // pastikan id valid
+        $pasien = Pasien::findOrFail($id_pasien); 
         $obat = Obat::all();
     
         return view('alarm.create', compact('pasien', 'obat'));
@@ -68,7 +68,7 @@ class AlarmController extends Controller
     
         Alarm::create($data);
     
-        return redirect()->route('alarm.index')->with('success', 'Alarm berhasil ditambahkan.');
+        return redirect()->route('alarm.create')->with('success', 'Alarm berhasil ditambahkan.');
     }
     
 
@@ -94,7 +94,7 @@ class AlarmController extends Controller
         );
     }
 
-    return response()->json(['message' => 'Alarm updated']);
+    return redirect()->route('alarm.detail', $alarm->id_pasien);
 }
 
     
