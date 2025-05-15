@@ -8,6 +8,8 @@ use App\Http\Controllers\ObatController;
 use App\Http\Controllers\DiagnosaPenyakitController;
 use App\Http\Controllers\AlarmController;
 use App\Http\Controllers\RiwayatAlarmController;
+use App\Http\Controllers\StaffController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +25,9 @@ Route::get('/login', [StaffAuthController::class, 'showLoginForm'])->name('login
 Route::post('/login', [StaffAuthController::class, 'login'])->name('staff.login.process');
 //Route::get('/logout', [StaffAuthController::class, 'logout'])->name('staff.logout');
 Route::get('/logout', [StaffAuthController::class, 'logout'])->name('staff.logout');
+
+Route::resource('staff', StaffController::class);
+
 
 
 Route::resource('pasien', PasienController::class);

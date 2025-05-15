@@ -286,10 +286,9 @@
 .sidebar a {
   padding: 0;
 }
-
-
-
 </style>
+
+<html></html>
   </head>
   <body>
     <section class="sidebar">
@@ -339,6 +338,13 @@
             <span class="title">Riwayat Alarm</span>
           </a>
           <span class="tooltip">Riwayat Alarm</span>
+        </li>
+        <li>
+          <a href="/staff">
+          <i class='bx bx-timer'></i>
+            <span class="title">Staff</span>
+          </a>
+          <span class="tooltip">Staff</span>
         </li>
 
 
