@@ -9,7 +9,7 @@ use App\Http\Controllers\DiagnosaPenyakitController;
 use App\Http\Controllers\AlarmController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingpage.landing');
 });
 
 Route::get('/dashboard', function () {
