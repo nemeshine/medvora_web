@@ -12,7 +12,7 @@ class DiagnosaPenyakitController extends Controller
     {
 
         if (!session()->has('id_staff')) {
-            return redirect('/login'); // tendang ke /
+            return redirect('/login');
         }
 
         $perPage = $r->entries ?? 10;

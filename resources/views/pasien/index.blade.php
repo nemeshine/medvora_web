@@ -85,7 +85,7 @@
                     <th>NIK</th>
                     <th>Nama</th>
                     <th>Email</th>
-                    <th>Tanggal Lahir</th>
+                    <th>Usia</th>
                     <th>Jenis Kelamin</th>
                     <th>Nomor HP</th>
                     <th>HP Keluarga</th>
@@ -100,7 +100,7 @@
                         <td>{{ $pasien->nik }}</td>
                         <td>{{ $pasien->nama_pasien }}</td>
                         <td>{{ $pasien->email }}</td>
-                        <td>{{ optional($pasien->tanggal_lahir)->format('d/m/Y') ?? '-' }}</td>
+                        <td>{{ $pasien->usia }}</td>
                         <td>{{ $pasien->jenis_kelamin }}</td>
                         <td>{{ $pasien->nomor_hp }}</td>
                         <td>{{ $pasien->nomor_hp_keluarga }}</td>

@@ -20,6 +20,7 @@
   font-family: "Poppins", sans-serif;
   --color-hover: rgba(32, 59, 232);
   --transition: all 0.2s ease;
+  transition: smooth;
 }
 
 .sidebar {
@@ -285,10 +286,9 @@
 .sidebar a {
   padding: 0;
 }
-
-
-
 </style>
+
+<html></html>
   </head>
   <body>
     <section class="sidebar">
@@ -313,7 +313,7 @@
         </li>
         <li>
           <a href="/diagnosa">
-          <i class='bx bx-heart'></i>
+          <i class='bx bx-first-aid'></i>
             <span class="title">Diagnosa Penyakit</span>
           </a>
           <span class="tooltip">Diagnosa Penyakit</span>
@@ -338,6 +338,13 @@
             <span class="title">Riwayat Alarm</span>
           </a>
           <span class="tooltip">Riwayat Alarm</span>
+        </li>
+        <li>
+          <a href="/staff">
+          <i class='bx bx-timer'></i>
+            <span class="title">Staff</span>
+          </a>
+          <span class="tooltip">Staff</span>
         </li>
 
 

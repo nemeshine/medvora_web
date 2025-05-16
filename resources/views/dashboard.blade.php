@@ -19,7 +19,7 @@
     .filter-select { width: 200px; }
     .pengguna{background-color: black; color: #fff;align-items: center; border-radius: 10px; width: 50%; text-align: center; padding: 8px; margin-left: auto;margin-right: auto;}
     .alarm_aktif{background-color: blue; color: #fff;align-items: center; border-radius: 10px; width: 50%; text-align: center; padding: 8px; margin-left: auto;margin-right: auto;}
-    .alarm_terlewat{background-color:blueviolet; color: #fff;align-items: center; border-radius: 10px; width: 50%; text-align: center; padding: 8px; margin-left: auto;margin-right: auto;}
+    .alarm_terlewat{background-color:#eb2f64; color: #fff;align-items: center; border-radius: 10px; width: 50%; text-align: center; padding: 8px; margin-left: auto;margin-right: auto;}
     .alarm_selesai{background-color: green; color: #fff;align-items: center; border-radius: 10px; width: 50%; text-align: center; padding: 8px; margin-left: auto;margin-right: auto;}
     .pengguna_search{display: flex;align-items: center;text-align: center;}
   </style>
@@ -52,7 +52,7 @@
           </div>
             <div class="d-flex align-items-center mt-2">
               <i class="fas fa-clock icon text-info"></i>
-              <h4 class="mb-0 ms-auto">150</h4>
+              <h4 class="mb-0 ms-auto">{{ $alarmAktif }}</h4>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
             </div>
             <div class="d-flex align-items-center mt-2">
               <i class="fas fa-exclamation-triangle icon text-danger"></i>
-              <h4 class="mb-0 ms-auto">30</h4>
+              <h4 class="mb-0 ms-auto">{{ $alarmTerlewat }}</h4>
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@
           </div>
             <div class="d-flex align-items-center mt-2">
               <i class="fas fa-check-circle icon text-purple"></i>
-              <h4 class="mb-0 ms-auto">75</h4>
+              <h4 class="mb-0 ms-auto">{{ $alarmSelesai }}</h4>
             </div>
           </div>
         </div>
@@ -125,19 +125,30 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+  const chartLabels = @json($chartData['labels']);
+  const dataAktif = @json($chartData['aktif']);
+  const dataTerlewat = @json($chartData['terlewat']);
+  const dataSelesai = @json($chartData['selesai']);
+
   const ctx = document.getElementById('dashboardChart').getContext('2d');
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul'],
+      labels: chartLabels,
       datasets: [
-        { label: 'Alarm Aktif', type: 'line', data: [65,40,90,70,56,55,40], borderColor: '#3498db', tension: 0.4, fill: false },
-        { label: 'Alarm Terlewat', data: [21,40,40,19,95,27,50], backgroundColor: '#eb2f64' },
-        { label: 'Alarm Selesai', data: [10,20,10,30,20,20,10], backgroundColor: '#a29bfe' }
+        { label: 'Alarm Aktif', type: 'line', data: dataAktif, borderColor: '#3498db', tension: 0.4, fill: false },
+        { label: 'Alarm Terlewat', data: dataTerlewat, backgroundColor: '#eb2f64' },
+        { label: 'Alarm Selesai', data: dataSelesai, backgroundColor: 'green' }
       ]
     },
-    options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' }
+      }
+    }
   });
 </script>
+
 </body>
 </html>
