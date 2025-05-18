@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
 
-class Pasien extends Model
+class Pasien extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, Notifiable;
 
     protected $table = 'pasien';
     protected $primaryKey = 'id_pasien';
@@ -24,11 +25,12 @@ class Pasien extends Model
         'nomor_hp_keluarga',
         'riwayat_penyakit',
         'password',
-        'usia', // tambahkan usia agar bisa diisi otomatis
+        'usia',
     ];
 
     protected $hidden = [
         'password',
+        'remember_token', // walaupun kamu mungkin tidak pakai ini, tetap aman disembunyikan
     ];
 
     protected $casts = [
@@ -42,7 +44,6 @@ class Pasien extends Model
         return $this->hasMany(Alarm::class, 'id_pasien', 'id_pasien');
     }
 
-    // Hitung usia saat membuat dan memperbarui data
     protected static function booted()
     {
         static::creating(function ($pasien) {
