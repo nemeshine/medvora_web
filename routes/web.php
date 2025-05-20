@@ -12,7 +12,7 @@ use App\Http\Controllers\StaffController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingpage.landing');
 });
 
 Route::get('/dashboard', function () {

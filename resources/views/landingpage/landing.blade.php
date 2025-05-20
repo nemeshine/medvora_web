@@ -825,7 +825,8 @@
             <a href="#contact">Contact</a>
         </nav>
 
-        <a href="#" class="btn-login">Login</a>
+        <a href="{{ route('login') }}" class="btn-login">Login</a>
+
     </header>
 
     <section class="hero">
