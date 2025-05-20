@@ -341,7 +341,7 @@
         </li>
         <li>
           <a href="/staff">
-          <i class='bx bx-timer'></i>
+          <i class='bx bx-shield-plus'></i>
             <span class="title">Staff</span>
           </a>
           <span class="tooltip">Staff</span>

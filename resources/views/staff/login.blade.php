@@ -108,6 +108,12 @@
     <h2>Hallo Admin !</h2>
     <p>Masukkan Informasi Akun</p>
 
+    @if($errors->has('error'))
+      <div class="alert" style="color: red; text-align: center; margin-bottom: 10px;">
+        {{ $errors->first('error') }}
+      </div>
+    @endif
+
     <form action="{{ route('staff.login.process') }}" method="POST">
       @csrf
       <div class="input-group">
@@ -137,4 +143,5 @@
     });
   </script>
 </body>
+
 </html>
