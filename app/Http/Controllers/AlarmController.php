@@ -15,6 +15,11 @@ class AlarmController extends Controller
 {
     public function index()
     {
+
+                if (!session()->has('id_staff')) {
+            return redirect('/login');
+        }
+
         $list = Pasien::with('alarm')->withCount([
             'alarm as total_alarm',
             'alarm as total_obat' => fn($q) => $q->selectRaw('SUM(total_obat)'),
@@ -25,6 +30,7 @@ class AlarmController extends Controller
         
     
         return view('alarm.index', compact('list'));
+
     }
     
 

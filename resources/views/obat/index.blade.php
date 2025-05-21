@@ -27,6 +27,18 @@
         <div class="alert alert-success">{{ session('success') }}</div>
       @endif
 
+      <!-- Form Search pindah ke atas tombol -->
+      <div class="row mb-2">
+        <div class="col-md-12 text-end">
+          <form class="d-inline-block" method="GET" action="{{ route('obat.index') }}">
+            <div class="input-group" style="width: 250px; float: right;">
+              <input type="text" name="search" class="form-control" placeholder="Cari..." value="{{ request('search') }}">
+              <button class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+
       <div class="row mb-3">
         <div class="col-md-6 d-flex align-items-center">
           <label class="me-2">Show</label>
@@ -42,14 +54,9 @@
           <label class="ms-2">entries</label>
         </div>
         <div class="col-md-6 text-end">
-          <a href="{{ route('obat.create') }}" class="btn btn-add"><i class="fas fa-plus"></i> Tambah Obat</a>
-          <form class="d-inline ms-2" method="GET" action="{{ route('obat.index') }}">
-            <div class="input-group" style="width:250px; display:inline-block;">
-              <input type="text" name="search" class="form-control" placeholder="Cari..."
-                     value="{{ request('search') }}">
-              <button class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
-            </div>
-          </form>
+          <a href="{{ route('obat.create') }}" class="btn btn-add">
+            <i class="fas fa-plus"></i> Tambah Obat
+          </a>
         </div>
       </div>
 

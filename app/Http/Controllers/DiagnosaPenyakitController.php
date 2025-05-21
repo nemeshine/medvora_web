@@ -19,11 +19,17 @@ class DiagnosaPenyakitController extends Controller
         $q = DiagnosaPenyakit::with(['pasien','staff'])
              ->orderBy('id_diagnosa','desc');
 
-        if($r->filled('search')){
-            $s = $r->search;
-            $q->where('keluhan','like',"%{$s}%")
-              ->orWhere('diagnosa','like',"%{$s}%");
-        }
+if ($r->filled('search')) {
+    $s = $r->search;
+    $q->where(function($query) use ($s) {
+        $query->where('keluhan', 'like', "%{$s}%")
+              ->orWhere('diagnosa', 'like', "%{$s}%")
+              ->orWhereHas('pasien', function($q2) use ($s) {
+                  $q2->where('nama_pasien', 'like', "%{$s}%");
+              });
+    });
+}
+
 
         $list = $q->paginate($perPage)->withQueryString();
         return view('diagnosa.index',compact('list'));

@@ -51,6 +51,8 @@ Route::prefix('alarm')->group(function () {
 Route::get('/riwayat', [RiwayatAlarmController::class, 'index'])->name('riwayat.index');
 Route::get('/riwayat/{id_pasien}', [RiwayatAlarmController::class, 'detail'])->name('riwayat.detail');
 
+Route::post('/staff/verify-password', [StaffController::class, 'verifyPassword'])->name('staff.verify-password');
+
 
 
 

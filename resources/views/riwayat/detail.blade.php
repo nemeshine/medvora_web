@@ -4,22 +4,64 @@
   <meta charset="UTF-8">
   <title>Detail Riwayat Alarm</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
-    body { background-color: #f0f2f5; margin-left: 80px; }
-    .badge-selesai { background-color: #b37dfc; }
-    .badge-terlewat { background-color: #ff8fa3; }
-    .badge { padding: 6px 12px; font-size: 13px; color: white; border-radius: 8px; }
+    body {
+      background-color: #f5f6fa;
+      font-family: 'Segoe UI', sans-serif;
+      margin-left: 80px;
+    }
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      width: 100%;
+      margin: auto;
+    }
+    .badge-selesai {
+      background-color: #b37dfc;
+    }
+    .badge-terlewat {
+      background-color: #ff8fa3;
+    }
+    .badge {
+      padding: 6px 12px;
+      font-size: 13px;
+      color: white;
+      border-radius: 8px;
+    }
+    .search-box {
+      width: 250px;
+      border-radius: 20px;
+      padding-left: 15px;
+    }
+    .form-select-sm {
+      border-radius: 20px;
+      padding-left: 10px;
+    }
   </style>
 </head>
 <body>
-  @include('sidebar.sidebar')
 
-  <div class="container mt-5">
-    <h4 class="mb-4">Detail Riwayat Alarm</h4>
+@include('sidebar.sidebar')
+
+<div class="container mt-5">
+  <div class="card p-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h4 class="mb-0">Detail Riwayat Alarm</h4>
+      <form method="GET">
+        <div class="input-group" style="width: 250px;">
+          <input type="text" name="search" class="form-control search-box" placeholder="Cari obat..." value="{{ request('search') }}">
+          <button class="btn btn-outline-secondary" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
 
     <div class="row mb-3">
       <div class="col-md-6 d-flex align-items-center">
-        <label class="me-2">Show</label>
+        <label class="me-2">Tampilkan</label>
         <form id="formEntries" method="GET">
           <select name="entries" class="form-select form-select-sm d-inline" style="width: auto;" onchange="this.form.submit()">
             @foreach([10, 25, 50, 100] as $opt)
@@ -27,18 +69,7 @@
             @endforeach
           </select>
         </form>
-        <label class="ms-2">entries</label>
-      </div>
-
-      <div class="col-md-6 text-end">
-        <form method="GET">
-          <div class="input-group" style="width: 250px; float: right;">
-            <input type="text" name="search" class="form-control" placeholder="Cari..." value="{{ request('search') }}">
-            <button class="btn btn-outline-secondary" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </form>
+        <label class="ms-2">entri</label>
       </div>
     </div>
 
@@ -73,7 +104,8 @@
       </table>
     </div>
   </div>
+</div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 </body>
 </html>

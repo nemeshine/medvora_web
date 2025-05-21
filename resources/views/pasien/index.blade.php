@@ -66,15 +66,18 @@
                     <input type="hidden" name="search" value="{{ request('search') }}">
                 </form>
             </div>
-            <div class="col-md-6 text-end">
-                <form class="d-inline" method="GET" action="{{ route('pasien.index') }}">
-                    <div class="input-group" style="width: 250px; float: right;">
-                        <input type="text" name="search" class="form-control" placeholder="Cari..." value="{{ request('search') }}">
-                        <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
-                    </div>
-                </form>
-                <a href="{{ route('pasien.create') }}" class="btn btn-add ms-3"><i class="fas fa-plus"></i> Tambah Pasien</a>
+<div class="col-md-6 text-end">
+    <div class="d-flex flex-column align-items-end">
+        <form class="mb-2" method="GET" action="{{ route('pasien.index') }}">
+            <div class="input-group" style="width: 250px;">
+                <input type="text" name="search" class="form-control" placeholder="Cari..." value="{{ request('search') }}">
+                <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
             </div>
+        </form>
+        <a href="{{ route('pasien.create') }}" class="btn btn-add"><i class="fas fa-plus"></i> Tambah Pasien</a>
+    </div>
+</div>
+
         </div>
 
         <div class="table-responsive">

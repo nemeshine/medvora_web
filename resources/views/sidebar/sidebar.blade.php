@@ -437,7 +437,7 @@
         </li>
         <li>
           <a href="/staff">
-          <i class='bx bx-timer'></i>
+         <i class='bx bx-shield-plus'></i>
             <span class="title">Staff</span>
           </a>
           <span class="tooltip">Staff</span>
@@ -454,7 +454,7 @@
                 </form>
                 <span class="tooltip">Logout</span>
             </li>
-            <!-- Modal Konfirmasi Logout -->
+
             <div id="logoutModal" class="modal-overlay">
                 <div class="modal-box">
                     <h3>Apakah Anda ingin keluar?</h3>
@@ -502,7 +502,7 @@
                     document.getElementById('logoutForm').submit();
                 }
             });
-            return false; // agar link tidak langsung jalan
+            return false;
         }
 
         function proceedLogout() {

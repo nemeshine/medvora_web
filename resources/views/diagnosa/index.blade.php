@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
-    body{background:#f5f6fa;font-family:'Segoe UI',sans-serif;margin-left: 50px;}
+    body{background:#f5f6fa;font-family:'Segoe UI',sans-serif;margin-left:50px;}
     .card{border:none;border-radius:15px;box-shadow:0 2px 10px rgba(0,0,0,0.05);max-width:95%;margin:auto;}
     .btn-add{background:#5F4DFF;color:#fff;border-radius:20px;}
     .btn-add:hover{background:#4e3fd1;}
@@ -42,16 +42,15 @@
           <span class="ms-2">entries</span>
         </div>
         <div class="col-md-6 text-end">
-          <a href="{{ route('diagnosa.create') }}" class="btn btn-add">
-            <i class="fas fa-plus"></i> Tambah Diagnosa
-          </a>
-          <form class="d-inline ms-2" method="GET" action="{{ route('diagnosa.index') }}">
-            <div class="input-group" style="width:250px; display:inline-block;">
-              <input type="text" name="search" class="form-control" placeholder="Cari..."
-                     value="{{ request('search') }}">
-              <button class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+          <form method="GET" action="{{ route('diagnosa.index') }}" class="mb-2">
+            <div class="input-group" style="max-width: 300px; float: right;">
+              <input type="text" name="search" class="form-control" placeholder="Cari..." value="{{ request('search') }}">
+              <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
             </div>
           </form>
+          <a href="{{ route('diagnosa.create') }}" class="btn btn-add mt-2">
+            <i class="fas fa-plus"></i> Tambah Diagnosa
+          </a>
         </div>
       </div>
 
@@ -103,7 +102,7 @@
       </div>
 
       <div class="d-flex justify-content-end mt-3">
-        {{ $list->links() }}
+        {{ $list->appends(['search' => request('search'), 'entries' => request('entries')])->links() }}
       </div>
     </div>
   </div>
