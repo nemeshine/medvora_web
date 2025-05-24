@@ -39,10 +39,14 @@ class Pasien extends Authenticatable
         'updated_at'    => 'datetime',
     ];
 
-    public function alarm()
-    {
-        return $this->hasMany(Alarm::class, 'id_pasien', 'id_pasien');
-    }
+public function alarm() {
+    return $this->hasMany(Alarm::class, 'id_pasien');
+}
+
+public function diagnosa() {
+    return $this->hasMany(DiagnosaPenyakit::class, 'id_pasien');
+}
+
 
     protected static function booted()
     {

@@ -436,6 +436,13 @@
           <span class="tooltip">Riwayat Alarm</span>
         </li>
         <li>
+          <a href="/cetak_data">
+         <i class='bx bx-printer'></i>
+            <span class="title">Cetak Data</span>
+          </a>
+          <span class="tooltip">Cetak Data</span>
+        </li>
+        <li>
           <a href="/staff">
          <i class='bx bx-shield-plus'></i>
             <span class="title">Staff</span>
@@ -444,7 +451,8 @@
         </li>
 
 
-            <li style="margin-top: 100px;">
+
+            <li style="margin-top: 60px;">
                 <form id="logoutForm" action="{{ route('staff.logout') }}" method="GET">
                     @csrf
                     <a href="#" onclick="return confirmLogout();">

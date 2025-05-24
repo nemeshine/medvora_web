@@ -9,6 +9,7 @@ use App\Http\Controllers\DiagnosaPenyakitController;
 use App\Http\Controllers\AlarmController;
 use App\Http\Controllers\RiwayatAlarmController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\CetakController;
 
 
 Route::get('/', function () {
@@ -52,6 +53,10 @@ Route::get('/riwayat', [RiwayatAlarmController::class, 'index'])->name('riwayat.
 Route::get('/riwayat/{id_pasien}', [RiwayatAlarmController::class, 'detail'])->name('riwayat.detail');
 
 Route::post('/staff/verify-password', [StaffController::class, 'verifyPassword'])->name('staff.verify-password');
+
+Route::get('/cetak_data', [CetakController::class, 'index'])->name('cetak.index');
+Route::get('/cetak_data/{id}/pdf', [CetakController::class, 'cetak'])->name('cetak.pdf');
+
 
 
 
