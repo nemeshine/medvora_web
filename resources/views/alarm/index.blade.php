@@ -51,6 +51,33 @@
         <div class="alert alert-success">{{ session('success') }}</div>
       @endif
 
+      <div class="row mb-3">
+        <div class="col-md-6 d-flex align-items-center">
+          <label class="me-2">Show</label>
+          <form id="formEntries" action="{{ route('alarm.index') }}" method="GET">
+            <select name="entries" class="form-select form-select-sm" style="width: auto;" onchange="this.form.submit()">
+              @foreach([10,25,50,100] as $opt)
+                <option value="{{ $opt }}" {{ request('entries', 10) == $opt ? 'selected' : '' }}>{{ $opt }}</option>
+              @endforeach
+            </select>
+            <label class="ms-2">entries</label>
+            <input type="hidden" name="search" value="{{ request('search') }}">
+          </form>
+        </div>
+
+        <div class="col-md-6 text-end">
+          <div class="d-flex flex-column align-items-end">
+            <form class="mb-2" method="GET" action="{{ route('alarm.index') }}">
+              <div class="input-group" style="width: 250px;">
+                <input type="text" name="search" class="form-control" placeholder="Cari nama atau NIK..." value="{{ request('search') }}">
+                <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+              </div>
+              <input type="hidden" name="entries" value="{{ request('entries', 10) }}">
+            </form>
+          </div>
+        </div>
+      </div>
+
       <div class="table-responsive">
         <table class="table table-bordered text-center align-middle">
           <thead>
@@ -89,7 +116,7 @@
       </div>
 
       <div class="d-flex justify-content-end mt-3">
-        {{ $list->links() }}
+        {{ $list->appends(['search' => request('search'), 'entries' => request('entries')])->links() }}
       </div>
     </div>
   </div>

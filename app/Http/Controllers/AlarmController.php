@@ -13,25 +13,34 @@ use Illuminate\Support\Carbon;
 
 class AlarmController extends Controller
 {
-    public function index()
-    {
+    public function index(Request $request)
+{
+    // Cek login staff
+    if (!session()->has('id_staff')) {
+        return redirect('/login');
+    }
 
-                if (!session()->has('id_staff')) {
-            return redirect('/login');
-        }
+    // Ambil keyword pencarian
+    $search = $request->input('search');
 
-        $list = Pasien::with('alarm')->withCount([
+    // Query dengan filter pencarian + perhitungan jumlah
+    $list = Pasien::with('alarm')->withCount([
             'alarm as total_alarm',
             'alarm as total_obat' => fn($q) => $q->selectRaw('SUM(total_obat)'),
             'alarm as alarm_aktif' => fn($q) => $q->where('status', 'aktif'),
             'alarm as alarm_selesai' => fn($q) => $q->where('status', 'selesai'),
-        ])->orderByDesc('created_at')
-        ->paginate(10);
-        
-    
-        return view('alarm.index', compact('list'));
+        ])
+        ->when($search, function ($query) use ($search) {
+            $query->where('nama_pasien', 'like', "%{$search}%")
+                  ->orWhere('nik', 'like', "%{$search}%");
+        })
+        ->orderByDesc('created_at')
+        ->paginate(10)
+        ->appends(['search' => $search]); // supaya paginasi bawa parameter search
 
-    }
+    return view('alarm.index', compact('list', 'search'));
+}
+
     
 
     public function detail($id_pasien)

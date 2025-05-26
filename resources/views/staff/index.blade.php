@@ -31,6 +31,11 @@
         .table th {
             background-color: #f1f1f1;
         }
+    /* Pastikan sidebar tetap bisa diakses */
+    .sidebar {
+    z-index: 1070 !important; /* lebih tinggi dari backdrop */
+    }
+
     </style>
 </head>
 <body>
@@ -87,7 +92,7 @@
     </div>
 </div>
 <!-- Modal Konfirmasi Password -->
-<div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+<div class="modal fade" id="passwordModal" tabindex="0" aria-labelledby="passwordModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4 shadow-lg">
       <form id="verifyForm" method="POST" action="{{ route('staff.verify-password') }}">
