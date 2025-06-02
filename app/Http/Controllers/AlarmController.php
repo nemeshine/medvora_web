@@ -83,21 +83,35 @@ class AlarmController extends Controller
     
         Alarm::create($data);
     
-        return redirect()->route('alarm.create')->with('success', 'Alarm berhasil ditambahkan.');
+        return redirect()->route('alarm.detail', ['id_pasien' => $data['id_pasien']])
+                 ->with('success', 'Alarm berhasil ditambahkan.');
+
     }
     
 
-    public function update(Request $request, $id)
+public function update(Request $request, $id)
 {
     $request->validate([
-        'status' => 'required|in:aktif,terlewat,selesai'
+        'takaran'          => 'required|string',
+        'waktu_minum'      => 'required',
+        'tanggal_mulai'    => 'required|date',
+        'tanggal_selesai'  => 'required|date|after_or_equal:tanggal_mulai',
+        'instruksi'        => 'required|in:sebelum,sesudah',
+        'status'           => 'required|in:aktif,terlewat,selesai'
     ]);
 
     $alarm = Alarm::findOrFail($id);
+
+    $alarm->takaran = $request->takaran;
+    $alarm->waktu_minum = $request->waktu_minum;
+    $alarm->tanggal_mulai = $request->tanggal_mulai;
+    $alarm->tanggal_selesai = $request->tanggal_selesai;
+    $alarm->instruksi = $request->instruksi;
     $alarm->status = $request->status;
+
     $alarm->save();
 
-    // Cek dan catat ke riwayat jika status 'terlewat' atau 'selesai'
+    // Catat ke riwayat jika status terlewat / selesai
     if (in_array($request->status, ['terlewat', 'selesai'])) {
         RiwayatAlarm::updateOrCreate(
             ['id_alarm' => $alarm->id_alarm],
@@ -109,8 +123,10 @@ class AlarmController extends Controller
         );
     }
 
-    return redirect()->route('alarm.detail', $alarm->id_pasien);
+    return redirect()->route('alarm.detail', $alarm->id_pasien)
+                     ->with('success', 'Alarm berhasil diperbarui.');
 }
+
 
     
 }

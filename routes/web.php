@@ -45,6 +45,7 @@ Route::prefix('alarm')->group(function () {
     Route::get('/alarm/create', [AlarmController::class, 'create'])->name('alarm.create');
     Route::post('/alarm/store', [AlarmController::class, 'store'])->name('alarm.store');
     Route::put('/alarm/{id}', [AlarmController::class, 'update'])->name('alarm.update');
+    
 
     
 });

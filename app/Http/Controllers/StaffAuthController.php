@@ -30,7 +30,7 @@ class StaffAuthController extends Controller
             Session::put('id_staff', $staff->id_staff);
             Session::put('nama_staff', $staff->nama_staff);
             Session::put('email', $staff->email);
-            Session::put('verified', false); // untuk kontrol akses halaman staff
+            Session::put('verified', false);
 
             return redirect('/dashboard');
         }
